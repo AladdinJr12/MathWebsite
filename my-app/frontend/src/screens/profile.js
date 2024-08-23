@@ -2,6 +2,8 @@ import { React, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -105,6 +107,20 @@ function Profile() {
 
     return(
         <>
+        <Navbar variant='dark' expand="lg" className='navbar'>
+            <Navbar.Toggle className='ms-auto' aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto">
+                    <Nav.Link href="/" className='active'>Home</Nav.Link>
+                    <Nav.Link href="/topics">Topics</Nav.Link>
+                </Nav>
+                <Form>
+                    <Button href='#' variant="outline-light" className='me-2'>Login</Button>
+                    <Button href='#' variant="primary" className='me-2'>Sign out</Button>
+                </Form>
+            </Navbar.Collapse>
+        </Navbar>
+        
         <Container fluid className='mt-5'>
             <Row className='d-flex w-100 justify-content-center'>
                 <Col xs={12} sm={6} md={8}>
