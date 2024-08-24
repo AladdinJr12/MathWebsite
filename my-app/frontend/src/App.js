@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 
-// import Home from './screens/home';
+import './styles/common.css';
+
+import Home from './screens/home';
 import Profile from './screens/profile';
 import Topics from './screens/topics';
 
@@ -30,7 +32,7 @@ function App() {
 
     <Router>
       <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/topics" element={<Topics />} />
       </Routes>
