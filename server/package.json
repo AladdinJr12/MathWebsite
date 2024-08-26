@@ -1,0 +1,23 @@
+{
+  "name": "math-site-practice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-db": "cat db_schema.sql | sqlite3 database.db #build anew database from the sql file",
+    "clean-db": "rm database.db #remove the old database",
+    "build-db-win": "sqlite3 database.db < db_schema.sql",
+    "clean-db-win": "del database.db"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "sqlite3": "^5.1.7"
+  }
+}
