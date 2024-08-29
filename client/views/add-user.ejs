@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Account</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body class="LoginOrRegisterPage">
+    <form action="/users/register" method="POST" class="RegisterPageForm">
+        <h1 class="LoginRegisterPageH1">Create a New Account</h1>
+        <div class="form-group">
+            <label for="username" class="LoginOrRegisterPageLabel">Username:</label>
+            <input type="text" id="username" name="username" class="LoginRegisterInput" required>
+        </div>
+        <div class="form-group">
+            <label for="email" class="LoginOrRegisterPageLabel">Email:</label>
+            <input type="email" id="email" name="email" class="LoginRegisterInput" required>
+        </div>
+        <div class="form-group">
+            <label for="gender" class="LoginOrRegisterPageLabel">Gender:</label>
+            <select id="gender" name="gender" class="LoginRegisterInput" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="birthday" class="LoginOrRegisterPageLabel">Birthday:</label>
+            <input type="date" id="birthday" name="birthday" class="LoginRegisterInput" required>
+        </div>
+        <div class="form-group position-relative">
+            <label for="password" class="LoginOrRegisterPageLabel">Password:</label>
+            <input type="password" id="password" name="password" class="passwordInput" required>
+            <span class="toggle-password" onclick="togglePassword('password')">&#128065;</span> <!-- Eye Icon -->
+        </div>
+        <div class="form-group position-relative">
+            <label for="confirm-password" class="LoginOrRegisterPageLabel">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" class="passwordInput" required>
+            <span class="toggle-password" onclick="togglePassword('confirmPassword')">&#128065;</span> <!-- Eye Icon -->
+        </div>        
+        <button type="submit" class="LoginRegisterBtn">Create Account</button>
+        <p class="LoginOrRegisterPtag">Already have an account? <a href="/users/login">Login here</a>.</p>
+    </form>
+</body>
+</html>
+
+<script>
+    function togglePassword(inputId) {
+        const input = document.getElementById(inputId);
+        const icon = input.nextElementSibling;
+        if (input.type === "password") {
+            input.type = "text";
+            icon.textContent = '🙈'; // Change icon to a "closed eye" when showing password
+        } else {
+            input.type = "password";
+            icon.textContent = '👁'; // Change icon to an "open eye" when hiding password
+        }
+    }
+    </script>
+    
