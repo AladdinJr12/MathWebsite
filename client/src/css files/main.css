@@ -1,0 +1,168 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+} */
+
+/* button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+} */
+
+
+/*--------------------------____________For all_pages________________-----------------------**/
+.indexBody {
+  margin: 0;
+  /* display: flex; */
+  /* place-items: center; */
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+
+/* ------************------For the header--------*************-----*/
+.header_section{
+  background-color: #9fceea;
+  display: block ;
+}
+
+.navbar {
+  background-color: #034F95;
+}
+
+
+/*--------------------------____________questions_section________________-----------------------**/
+
+
+/*--------------------------____________Login Page________________-----------------------**/
+
+/* main.css */
+
+.LoginOrRegisterPage {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110vh;
+}
+
+.LoginRegisterPageH1 {
+  color: #333;
+  text-align: center;
+}
+
+.RegisterPageForm {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 380px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.LoginOrRegisterPageLabel {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/*---This adjusts the p tag for "Don't/Already have account"--*/
+.LoginOrRegisterPtag{
+  color: #151718;
+}
+
+.LoginRegisterInput, .passwordInput {
+  width: calc(100% - 40px);
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 10px;
+  color: #151718;
+  background-color: #d5d0d0d8;
+}
+
+.passwordInput{
+  width: calc(100% - 40px); /* Adjusted width for eye icon */
+  padding-right: 40px; /* Padding for the eye icon */
+}
+
+.LoginRegisterBtn {
+  width: 100%;
+  padding: 10px;
+  background-color: #5cb85c;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.LoginRegisterBtn:hover {
+  background-color: #4cae4c;
+}
+
+.form-group.position-relative {
+  position: relative;
+}
+
+.form-group .toggle-password {
+  position: absolute;
+  top: 70%;
+  right: 3px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #777;
+}
+
+
+
+/*--------------------------____________Register Page________________-----------------------**/
+
+
+

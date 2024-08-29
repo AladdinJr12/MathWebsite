@@ -1,0 +1,266 @@
+#root {
+  background-color: #a0ccea;
+  display: block !important;
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  /* padding: 2rem; */
+  text-align: center; 
+  min-height: 100%;
+  border: 2px solid black;
+}
+
+/*---------------------________________CSS for questions-settings page_______________------------------*/
+.questionsSettingsDiv{
+  background-color: #9fceea;
+}
+
+/*--Adjusting the form section of the page-*/
+.questions_settings_form{
+  display: flex;
+  flex-direction: column;
+  background-color: #eab646;
+  padding: 20px; 
+  border-radius: 5px;
+  align-items: center;
+  text-align: center;
+  justify-content: center !important;
+}
+
+/*--Adjusting the labels for the inidividual buttons---*/
+.QuestionSettings_Labels{
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+/*--Adjusting the select div for the---*/
+.QuestionSettings_Select{
+  width: 360px !important;
+  text-align: center;
+}
+
+
+/*---------------________________ end of CSS for questions-settings page_______________------------------*/
+
+
+
+
+/*---------------------________________CSS for QuestionsPage.jsx_______________------------------*/
+
+.questions_section{
+  background-color: #ffffff;
+  padding-bottom: 5%;
+}
+
+.pointsHeader{
+  padding-bottom: 3%;
+  padding-top: 15%;
+}
+
+
+
+/*------____CSS for the answers feedback____------*/
+.correct, .correctOption {
+  color: green;
+  font-weight: bold;
+}
+
+.correct{
+  background-color: rgb(188, 230, 188);
+}
+
+.incorrect, .incorrectOption {
+  color: red;
+  font-weight: bold;
+}
+
+.incorrect{
+  background-color: rgb(255, 162, 162);
+}
+
+/*---------------------________________end of CSS for QuestionsPage.jsx_______________------------------*/
+
+
+/*---------------------________________CSS for MCQ.jsx_______________------------------*/
+.question_card{
+  text-align: left;
+  background-color: #a0ccea !important;
+  max-width: 99%;
+  margin: auto /*--This centralises the question card-*/
+}
+
+/*----Adjusting the radio button for the MCQ----*/
+.MCQ_radio input[type="radio"] {
+  /*---Hides the default radio button--*/
+  display: none;
+}
+
+/*---Adjust for the custom radio button----*/
+.MCQ_radio label {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-size: 1rem; 
+  color: black;
+}
+
+/*---Creating the custom radio button appearance before being clicked on ----*/
+.MCQ_radio label::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  /*---Customizing the color of the MCQ borders----*/
+  border: 3px solid rgba(0, 174, 255, 0.938); 
+  border-radius: 50%;
+  background-color: white;
+  transform: translateY(-50%);
+}
+
+/*----Change the background and border of the MCQ radio dot when clicked on-------*/
+.MCQ_radio input[type="radio"]:checked + label::before {
+  /*--Dot color when clicked on--*/
+  background-color: white;
+  /*--Border colour of the clicked on dot--*/
+  border-color: rgba(0, 174, 255, 0.938); 
+}
+
+/*--Adding the dot inside the radio button when checked---*/
+.MCQ_radio input[type="radio"]:checked + label::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  width: 8px;
+  height: 8px;
+  background-color: rgba(7, 116, 166, 0.811); ; /* Color of the dot */
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+/*--Adjusting the labels for the points--*/
+.questionPointsLabel{
+  padding-bottom: 3%;
+  padding-left: 0.5%;
+  width: 5%;
+}
+
+/*------------------_____________end of CSS for MCQ.jsx_______________------------------*/
+
+/*------------------____________Css for Profile.jsx__________------------------------*/
+.ProfileDiv{
+  /* background-color: #fbfafad6; */
+  padding-bottom: 2%;
+  /* min-height: 90vh; */
+}
+
+.profileSect{
+  text-align: left;
+}
+
+/*------------------____________end of css for Profile.jsx__________------------------------*/
+
+/*------------------____________Css for Topics.jsx__________------------------------*/
+.topicsPage{
+  min-height: 75vh;
+}
+
+.topicsPageTitle{
+  font-size: 3.3rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+.topicsCard{
+  text-align: center;
+  align-items: center;
+  font-size: 1.3rem;
+}
+
+.topicBtn{
+  display: block;
+  margin-top: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  font-weight: bold;
+  background-color: #9fceea;
+  border: none;
+  outline: none;
+  border-radius: 1rem;
+  padding: 10px;
+  min-width: 10vw;
+}
+
+
+.topicBtn:hover{
+  background-color: #4c95bf;
+  outline: none;
+}
+
+
+
+/*-This is to adjust the table placed inside of the card div-*/
+.topicsTableCard{
+  list-style-type: none;
+  padding-left: 17%;
+}
+
+
+/*------------------____________end of css for Topics.jsx__________------------------------*/
+
+
+
+
+/*----------------___________Classes that affect multiple jsx files____________-------------------*/
+/*--Adjusting the submit button for the questions' settings---*/
+.QuestionPageBtn{
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  font-weight: bold;
+  background-color: #9fceea;
+  border: none;
+  outline: none;
+  border-radius: 1rem;
+  font-size: 1.4rem;
+
+  padding: 0.6em 1.2em;
+}
+
+.QuestionPageBtn:focus,
+.QuestionPageBtn:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+
+.QuestionPageBtn:hover{
+  background-color: #4c95bf;
+  outline: none;
+}
+
+
+/*-------CSS for questions itself--------------*/
+/*---Adding spacing for the question's number */
+.question_num{
+  padding-right: 0.4%;
+}
+
+.question_content{
+  white-space: nowrap;
+}
+
+/*-----CSS for the hint buttons and hint div----*/
+.hintBtn{
+  background-color: #6b6b6c ;
+}
+
+.hintSect{
+  background-color: #f1f1f1;
+  transition: background-color 0.3s !important;
+  color: #0a0a0b;
+  min-height: 10vh;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+}
+
+/*----------------___________ end of classes that affect multiple jsx files____________------------------*/
