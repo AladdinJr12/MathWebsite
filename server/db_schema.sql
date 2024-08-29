@@ -6,10 +6,14 @@ BEGIN TRANSACTION;
 -------database for the users-------------
 CREATE TABLE IF NOT EXISTS users (
 	user_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    user_name VARCHAR(50) NOT NULL,
-    email VARCHAR(100) NOT NULL,
+    user_name VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    gender TEXT NOT NULL,
+    birthday TEXT NOT NULL,
+    password_hash TEXT NOT NULL,    
     password VARCHAR(50) NOT NULL
 );
+
 
 -- Lessons have fk_topic_id that references Topics table --
 CREATE TABLE IF NOT EXISTS topics (
@@ -49,11 +53,11 @@ CREATE TABLE IF NOT EXISTS Questions(
 
 
 ----------------//---****----- Where the users are inserted at-------****-------//---------
-INSERT INTO users (user_name, email, password)
+INSERT INTO users (user_name, email, gender, birthday, password_hash, password)
 VALUES
-('Lois Lane', 'loislane@gmail.com', 'abc123'),
-('John Doe', 'johndoe@gmail.com', 'def456'),
-('Jane Doe', 'janedoe@gmail.com', 'ghi789');
+('Lois Lane', 'loislane@gmail.com', 'Female', '20-03-2000', 'hashed_password_here' ,'abc123'),
+('John Doe', 'johndoe@gmail.com', 'Female', '21-04-1989', 'hashed_password_here' ,'def456'),
+('Jane Doe', 'janedoe@gmail.com', 'Male', '09-03-2010', 'hashed_password_here','ghi789');
 
 ----------------//---****----- Where the math topics are inserted at -------****-------//---------
 INSERT INTO topics (topic_name)
