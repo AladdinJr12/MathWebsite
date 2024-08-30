@@ -152,7 +152,6 @@
 .ProfileDiv{
   /* background-color: #fbfafad6; */
   padding-bottom: 2%;
-  /* min-height: 90vh; */
 }
 
 .profileSect{
@@ -192,7 +191,6 @@
   min-width: 10vw;
 }
 
-
 .topicBtn:hover{
   background-color: #4c95bf;
   outline: none;
@@ -223,7 +221,6 @@
   outline: none;
   border-radius: 1rem;
   font-size: 1.4rem;
-
   padding: 0.6em 1.2em;
 }
 
