@@ -19,12 +19,12 @@ let users = {
         });
     },
 
-    editUserDetails: (userId, username, email, currentPw, newPw, callback) => {
+    editUserDetails: (userId, username, email, currentPw, newPw, pwHash, callback) => {
         if (currentPw && newPw) {
             var sql = `UPDATE users
-                SET user_name=?, email=?, password=?
+                SET user_name=?, email=?, password=?, password_hash=?
                 WHERE user_id=? AND password=?`;
-            db.run(sql, [username, email, newPw, userId, currentPw], function(err)  {
+            db.run(sql, [username, email, newPw, pwHash, userId, currentPw], function(err)  {
                 if (err) {
                     console.log("SQL Error: " + err);
                     return callback(err, null);
@@ -32,8 +32,7 @@ let users = {
                     return callback(null, { changes: this.changes });
                 }
             });
-        } 
-        else{
+        } else {
             var sql = `UPDATE users
                 SET user_name=?, email=?
                 WHERE user_id=?`;

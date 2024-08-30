@@ -5,6 +5,7 @@ const app = express();
 const cors = require('cors')
 const path = require('path');
 var bodyParser = require("body-parser");
+const bcrypt = require('bcrypt');
 
 const port = 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -106,27 +107,30 @@ app.get('/user/:userId', (req, res) => {
 });
 
 //---For adding user data into the database-----//
-app.put('/editUser/:userId', (req, res) => {
+app.put('/editUser/:userId', async (req, res) => {
   var userId = req.params.userId;
-  var username = req.body.username;
-  var email = req.body.email;
-  var currentPw = req.body.currentPassword;
-  var newPw = req.body.newPassword;
-  var confirmPw = req.body.confirmPassword;
+  var { username, email, currentPassword, newPassword, confirmPassword } = req.body;
 
-  if (newPw === confirmPw) {
-      Users.editUserDetails(userId, username, email, currentPw, newPw, (err, results) => {
-          if (err) {
-              console.log("the error is at line 109");
-              console.log(err);
-              return res.status(500).send();
-          } else {
-              return res.status(200).json(results);
-          }
-      });
+  // Hash the password
+  if (newPassword && confirmPassword) {
+    var passwordHash = await bcrypt.hash(newPassword, 10);
   } else {
-      res.status(422).send();
-      res.redirect(`/user/${userId}`);
+    var passwordHash = "";
+  }
+
+  if (newPassword === confirmPassword) {
+    Users.editUserDetails(userId, username, email, currentPassword, newPassword, passwordHash, (err, results) => {
+      if (err) {
+        console.log("the error is at line 109");
+        console.log(err);
+        return res.status(500).send();
+      } else {
+        return res.status(200).json(results);
+      }
+    });
+  } else {
+    res.redirect(`/user/${userId}`);
+    return res.status(400).send('Confirm Password must match New Password');
   }
 });
 
