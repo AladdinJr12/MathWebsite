@@ -2,6 +2,38 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 
+//-----This will hash all of the passwords that do not have a hashed password value----//
+const querySelect = 'SELECT user_id, password_hash, password FROM users';
+global.db.all(querySelect, [], async (err, rows) => {
+    if (err) {
+        //**--In case the fetching fails--**/
+        console.error('Error fetching users:', err);
+        return;
+    }
+
+    for (const row of rows) {
+        if (row.password_hash == 'hashed_password_here') {
+            try {
+                const passwordHash = await bcrypt.hash(row.password, 10);
+                
+                const queryUpdate = 'UPDATE users SET password_hash = ? WHERE user_id = ?';
+                await new Promise((resolve, reject) => {
+                    global.db.run(queryUpdate, [passwordHash, row.user_id], function (err) {
+                        if (err) {
+                            reject(`Error updating password for user_id ${row.user_id}: ${err}`);
+                        } else {
+                            console.log(`Password for user_id ${row.user_id} was updated successfully`);
+                            resolve();
+                        }
+                    });
+                });
+            } catch (err) {
+                console.error(`Error hashing password for user_id ${row.user_id}:`, err);
+            }
+        }
+    }
+});
+
 // Render Create New Account page
 router.get('/register', (req, res) => {
     res.render('add-user');
@@ -22,6 +54,25 @@ router.post('/register', async (req, res) => {
     // Hash the password
     const passwordHash = await bcrypt.hash(password, 10);
 
+    //---validating that the email or user_name is unique-----//
+    let user= null;
+    const emailUsernameQuery = 'SELECT user_name, email FROM users WHERE user_name = ? AND email = ?'
+    try {
+        user = await db.get(emailUsernameQuery, [username, email]);
+    
+        if (user) {
+            // If user is found, return an error message
+            return res.render("add-user.ejs", { error: "Your username or email has already been taken" });
+        }
+    
+        //----Continue with further processing if the user is not found---//
+    } catch (err) {
+        //----Handle the error by logging it----//
+        console.error("Database query error:", err);
+        return res.status(500).render("add-user.ejs", { error: "An error occurred while checking the username and email." });
+    }
+    
+    //------------.Adding in the new account's details-----------------//
     try {
         // Example query (use your own DB method to insert data)
         const query = `
@@ -31,9 +82,10 @@ router.post('/register', async (req, res) => {
         // Execute the query with your database connection (this is pseudocode)
         await db.run(query, [username, email, gender, birthday, passwordHash, password]);
 
-        res.redirect('/users/login');
+        res.render("login.ejs", {success: "New account successfully created!"});
     } catch (error) {
-        res.status(500).send('Error creating account');
+        console.log("The error is: ", error)
+        return res.render("add-user.ejs", { error: "Account was unsuccessfully created" });
     }
 });
 
@@ -63,17 +115,15 @@ router.post('/login', async (req, res) => {
             });
         });
 
+        //---If the username is incorrect----------//
         if (!user) {
-            return res.status(400).send('User not found');
+            return res.render("login.ejs", { error: "Username cannot be found" });
         }
-
-        console.log("Checking user");
-        console.log(user);
 
         // Check the password
         const match = await bcrypt.compare(password, user.password_hash);
         if (!match) {
-            return res.status(400).send('Invalid password');
+            return res.render("login.ejs", { error: "Password cannot be found" });
         }
 
         // Redirect to dashboard
