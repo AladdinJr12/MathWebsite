@@ -48,9 +48,6 @@ global.db = new sqlite3.Database('./database.db',function(err){
 //****** This two constants need to be placed after global.db is initialised ******/
 const Users = require('./model/users');
 const Topics = require('./model/topics');
-// console.log("Users")
-// console.log(Users)
-// console.log("Topics")
 
 //---When a request is made to this endpoint, it runs the function that queries --//
 //--the SQLite database and returns the results as a JSON response.--//
@@ -94,10 +91,6 @@ app.get('/api/answers', (req, res) => {
 //---For getting user data from the database----//
 app.get('/user/:userId', (req, res) => {
   var userId = req.params.userId;
-  console.log("Checking user id at line 87")
-  console.log(userId);
-  console.log("Checking database at line 96 of index.js")
-  console.log(db);
 
   Users.getOneUser(userId, (err, results) => {
       if (err) {
@@ -157,8 +150,6 @@ app.get('/topics', (req, res) => {
 // Add all the route handlers in usersRoutes to the app under the path /users
 const usersRoutes = require('./routes/register');
 app.use('/users', usersRoutes);
-
-
 
 // Make the web application listen for HTTP requests
 app.listen(port, () => {
