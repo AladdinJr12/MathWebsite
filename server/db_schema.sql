@@ -6,19 +6,19 @@ BEGIN TRANSACTION;
 -------database for the users-------------
 CREATE TABLE IF NOT EXISTS users (
 	user_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    user_name VARCHAR(50) NOT NULL UNIQUE,
-    email VARCHAR(100) NOT NULL UNIQUE,
+    user_name TEXT NOT NULL UNIQUE,
+    email TEXT NOT NULL UNIQUE,
     gender TEXT NOT NULL,
     birthday TEXT NOT NULL,
     password_hash TEXT NOT NULL,    
-    password VARCHAR(50) NOT NULL
+    password TEXT NOT NULL
 );
 
 
 -- Lessons have fk_topic_id that references Topics table --
 CREATE TABLE IF NOT EXISTS topics (
 	topic_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    topic_name VARCHAR(50) NOT NULL
+    topic_name TEXT NOT NULL
 );
 
 ---database for the correct and wrong answers + their explanation--------
