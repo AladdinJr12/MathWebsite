@@ -5,6 +5,7 @@ import App from './App.jsx';
 import './css files/main.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>   {/* Wrapping the App with BrowserRouter */}
