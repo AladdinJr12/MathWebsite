@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+
+//--For the header and footer sections----------//
+import HeaderComponent from './Header';
+import Footer from './Footer';
 
 //profile & topics
 export default function Topics() {
@@ -42,23 +42,13 @@ export default function Topics() {
 
 
     return(
-        <>
-        <Navbar variant='dark' expand="lg" className='navbar'>
-            <Navbar.Toggle className='ms-auto' aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
-                    <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="/topics" className='active'>Topics</Nav.Link>
-                </Nav>
-                <Form>
-                    <Button href='#' variant="outline-light" className='me-2'>Login</Button>
-                    <Button href='#' variant="primary" className='me-2'>Sign out</Button>
-                </Form>
-            </Navbar.Collapse>
-        </Navbar>
+        <div className='topicsPageDiv'>
+
+        {/* This is where the header section is placed at */}
+        <HeaderComponent/>
 
         <Container fluid className='mt-5 topicsPage'>
-            <h1 className='mt-5 topicsPageTitle'>Topics</h1>
+            <h1 className='mt-1 topicsPageTitle'>Topics</h1>
             <Row xs={1} sm={2} md={3} className='g-4 mt-3'>
                 {topicData.map(topic => (
                 <Col  key={topic.topic_id}>
@@ -66,13 +56,15 @@ export default function Topics() {
                         <Card.Body>
                             <Card.Title className='text-center'> <h1> {topic.topic_name}  </h1> </Card.Title>
                             <ol className='list-decimal list-inside topicsTableCard'>
-                                {/* This should be where the lessons are listed (JOIN topics table with lessons table) */}
-                                <button type="submit" className='topicBtn' > Lessons </button>  
-                                <button type="submit"
-                                className='topicBtn'
-                                onClick={() => handleQuizPageSubmit(topic.topic_name)}>
-                                    Quizzes 
-                                </button>  
+                                {/* next div is created to centralise the buttons */}
+                                <div className="d-flex flex-column justify-content-center align-items-center">
+                                    <button type="submit" className='topicBtn mb-2'>Lessons</button>  
+                                    <button type="submit"
+                                        className='topicBtn'
+                                        onClick={() => handleQuizPageSubmit(topic.topic_name)}>
+                                        Quizzes 
+                                    </button>
+                                </div>
                             </ol>
                             {/* <a href='#' className='stretched-link'></a> */}
                         </Card.Body>
@@ -81,6 +73,9 @@ export default function Topics() {
                 ))}
             </Row>
         </Container>
-        </>
+
+        {/* This is where the footer section is placed at */}
+        <Footer/>
+        </div>
     );
 }

@@ -1,17 +1,17 @@
-// import Button from 'react-bootstrap/Button';
-
 //-------For creating the form for setting what kind of questions the user wishes to practice with--------//
 import Form from 'react-bootstrap/Form';
 //-------For navigating to different pages-------//
 import { useNavigate, useLocation } from 'react-router-dom';
-
+//--For the header section----------//
+import HeaderComponent from './Header';
 //----For storing the data of the selected question setting options---//
 import { useState } from 'react';
+import Footer from './Footer';
 
 export default function Question_settings(){
     //---Retrieving the selected topic name from the state----//
     const location = useLocation();
-    const { topicName } = location.state || {}; 
+    const { topicName = "Discrete Math" } = location.state || {}; 
 
     //----For storing the data of the selected question setting options---//
     const [numOfQuestions, setNumOfQuestions] = useState(1);
@@ -60,8 +60,10 @@ export default function Question_settings(){
 
     return(
         <div className='questionsSettingsDiv child'>
-            <h1> {topicName} Practice </h1>
+            {/* This is where the header section is placed at */}
+            <HeaderComponent/>
             <Form className='questions_settings_form' onSubmit={handleSubmit}>
+                <h1 className='pb-3 quizPageTitle'> {topicName} Practice </h1>
                 {/* Section for the number of questions */}
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <Form.Label className="QuestionSettings_Labels"> Number of questions </Form.Label>
@@ -125,8 +127,8 @@ export default function Question_settings(){
 
             </Form>
 
-            {/* How an image is posted: Note that the image needs to be in the public fodder first */}
-            {/* <img src='SampleImage1.png'></img> */}
+            {/* This is where the footer section is placed at */}
+            <Footer/>
         </div>
     )
 }
