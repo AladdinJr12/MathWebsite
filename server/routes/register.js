@@ -95,7 +95,6 @@ router.get('/login', (req, res) => {
 });
 
 // Handle Login form submission
-// Handle Login form submission
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
@@ -127,7 +126,7 @@ router.post('/login', async (req, res) => {
         }
 
         // Redirect to dashboard
-        res.redirect('/dashboard');
+        res.redirect(`http://localhost:5173/?LoginState=true`);
 
     } catch (error) {
         console.error('Error:', error);
