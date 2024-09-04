@@ -18,8 +18,6 @@ export default function Topics() {
     const getTopicDetails = async() => {
         await axios.get('http://localhost:3000/topics')
             .then(response => {
-                console.log("Checking response at line 20")
-                console.log(response)
                 setTopicData(response.data);
             })
             .catch(error => {
@@ -33,13 +31,14 @@ export default function Topics() {
         //----So as to navigate to the QuestionsPage route and getting the selected topic's name--------//
         navigate('/question-settings', { state: { topicName } });
      };
-    
+
+    const handleLessonPageSubmit = () => {
+        navigate('/lesson-page' );
+    }
 
     useEffect(() => {
         getTopicDetails();
- 
     }, []);
-
 
     return(
         <div className='topicsPageDiv'>
@@ -58,7 +57,9 @@ export default function Topics() {
                             <ol className='list-decimal list-inside topicsTableCard'>
                                 {/* next div is created to centralise the buttons */}
                                 <div className="d-flex flex-column justify-content-center align-items-center">
-                                    <button type="submit" className='topicBtn mb-2'>Lessons</button>  
+                                    <button type="submit" className='topicBtn mb-2' onClick={handleLessonPageSubmit}>
+                                        Lessons
+                                    </button>  
                                     <button type="submit"
                                         className='topicBtn'
                                         onClick={() => handleQuizPageSubmit(topic.topic_name)}>
@@ -66,7 +67,6 @@ export default function Topics() {
                                     </button>
                                 </div>
                             </ol>
-                            {/* <a href='#' className='stretched-link'></a> */}
                         </Card.Body>
                     </Card>
                 </Col>

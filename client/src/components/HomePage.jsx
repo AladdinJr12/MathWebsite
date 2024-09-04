@@ -17,12 +17,19 @@ export default function HomePage() {
     }, []);
 
     useEffect(() => {
+        //---Getting the url----//
         const params = new URLSearchParams(location.search);
+        //--Checking the login status and userID-----// 
         const loginState = params.get('LoginState');
+        const userId = params.get('userId');
         if (loginState === 'true') {
             localStorage.setItem('loginState', 'true');
             setLoginState(true);
         }
+        if(userId){
+            localStorage.setItem('userId', userId);
+        }
+
         
     }, [location.search]);
 
@@ -66,7 +73,7 @@ export default function HomePage() {
                         <li><a className="navbarOption" href="http://localhost:3000/users/login">Login</a></li>
                     )}
                     <li><a className="navbarOption" href="/topics">Topics</a></li>
-                    <li><a className="navbarOption" href="/lessons">Lessons</a></li>
+                    <li><a className="navbarOption" href="/lesson-page">Lessons</a></li>
                     <li><a className="navbarOption" href="/question-settings">Quizzes</a></li>
                     {loginState?(
                         <li><a className="navbarOption" href="#" onClick={handleLogout}>Logout</a></li>

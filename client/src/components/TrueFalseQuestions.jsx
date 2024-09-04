@@ -1,5 +1,4 @@
 //-------This is format for true/false type questions----//
-
 import PropTypes from 'prop-types';
 import { Form, Card } from 'react-bootstrap';
 import {useEffect, useState } from 'react';

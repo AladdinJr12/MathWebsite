@@ -40,8 +40,6 @@ export default function QuestionsPage(){
     //---Here is where we store the state of whether the quiz has been submitted or not---//
     const [quizSubmitted, setQuizSubmitted] = useState(false);    
 
-    //---------------//
-
 //-----__________Functionality for the options and buttons of the question page__________------------//
     //---Functionality for updating the users's selected answers----//
     const handleAnswerChange = (questionId, answer) => {
@@ -128,11 +126,6 @@ export default function QuestionsPage(){
                     //---comparing if the selected answer(s) are within the list of the correct answers--//
                     const correctAnswers = new Set([matchingAnswerData.correct_ans, matchingAnswerData.correct_ans_2]);
                     const userAnswersSet = new Set(user_ans);
-
-                    console.log("Checking true and false")
-                    console.log(matchingAnswerData)
-                    console.log(correctAnswers)
-                    console.log(userAnswersSet)
 
                     //---Check if the user selected all the correct answers and nothing else---//
                     isTheAnsCorrect = (
@@ -342,7 +335,6 @@ export default function QuestionsPage(){
 
     //----Calculate the number of correct answers---//
     useEffect(() => {
-        //console.log("The final feedback", feedback);
         const correctCount = Object.values(feedback).filter(
             (item) => item.correct === true
         ).length;

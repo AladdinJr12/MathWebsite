@@ -14,6 +14,7 @@ export default function HeaderComponent(){
     //----function for logging out---//
     const handleLogout = () =>{
         localStorage.removeItem('loginState');
+        localStorage.removeItem('userId');
         setLoginState(false);
     }
 
@@ -32,7 +33,7 @@ export default function HeaderComponent(){
                     )
                     }
                     <li><a className="navbarOption" href="/topics">Topics</a></li>
-                    <li><a className="navbarOption" href="/lessons">Lessons</a></li>
+                    <li><a className="navbarOption" href="/lesson-page">Lessons</a></li>
                     <li><a className="navbarOption" href="/question-settings">Quizzes</a></li>
                     {loginState?(
                         <li><a className="navbarOption" href="#" onClick={handleLogout}>Logout</a></li>

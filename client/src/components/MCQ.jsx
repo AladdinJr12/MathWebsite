@@ -24,7 +24,6 @@ export default function MCQ({question_data, onAnswerChange, submissionStatus }){
     
     useEffect(() => {
         if(!submissionStatus){
-            console.log("This MCQ statement was triggered")
             setSelectedAnswer('');   
         }
     }, [submissionStatus]);
@@ -47,10 +46,6 @@ export default function MCQ({question_data, onAnswerChange, submissionStatus }){
     // Generating a unique identifier/key for the component instance:
     const [componentKey] = useState(generateRandomString());
     
-    
-    console.log("key for mcq")
-    console.log(componentKey)
-
     return(
         <>
             <Card className="mb-4 question_card">

@@ -9,14 +9,22 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
-
-// import '../styles/common.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
+//---For transitioning to other pages----//
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Profile() {
-    //---Example of the userId we are targetting----//
-    const userId = 1;
+
+    const navigate = useNavigate();
+    const handleBackBtnSubmit = () => {
+        //----So as to navigate to the QuestionsPage route and getting the selected topic's name--------//
+        navigate('/');
+    };
+
+    //--- The userId we are targetting----//
+    const [userId, setUserId] = useState(1); 
 
     const [currentPwVisible, setCurrentPwVisible] = useState(false);
     const [newPwVisible, setNewPwVisible] = useState(false);
@@ -27,6 +35,15 @@ export default function Profile() {
     const [currentPassword, setCurrentPassword] = useState();
     const [newPassword, setNewPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
+
+
+    //----Changing the userid to the logined user's id----//
+    useEffect(() => {
+        const storedUserId = localStorage.getItem('userId');
+        if (storedUserId) {
+            setUserId(parseInt(storedUserId, 10)); //--Parse it as an integer---//
+        }
+    }, []);
 
     const toggleCurrentPw = () => {
         if (currentPwVisible === false) {
@@ -93,8 +110,6 @@ export default function Profile() {
     const getOneUser = async () => {
         try {
             const response = await axios.get(`http://localhost:3000/user/${userId}`);
-            // console.log("Checking the response")
-            // console.log(response)
 
             //----Filling up the users login username and email.
             if (response.data) {
@@ -110,7 +125,7 @@ export default function Profile() {
 
     useEffect(() => {
         getOneUser();
-    }, []);
+    }, [userId]);
 
     return(
         <div className='ProfileDiv' >
@@ -155,7 +170,8 @@ export default function Profile() {
                             </InputGroup>
                         </Form.Group>
 
-                        <Button variant='primary' type='submit'>Save Changes</Button>
+                        <Button className='profilePageBtn' type='submit'>Save Changes</Button>
+                        <Button className='BackToHomeBtn' onClick={handleBackBtnSubmit}>Back to Home page</Button>
                     </Form>
                 </Col>
             </Row>
