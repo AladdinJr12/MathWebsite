@@ -1,11 +1,12 @@
 
-// Set up express, bodyparser, path, cors and EJS
+// Set up express, bodyparser, path, cors, bcrypt and EJS
 const express = require('express');
 const app = express();
 const cors = require('cors')
 const path = require('path');
-var bodyParser = require("body-parser");
 const bcrypt = require('bcrypt');
+
+var bodyParser = require("body-parser");
 
 const port = 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -55,8 +56,7 @@ const Topics = require('./model/topics');
 app.get('/api/questions', (req, res) => {
     // SQL query to select all questions from the 'Questions' table
     const sql = `SELECT * FROM Questions`;
-    console.log("Checking database at line 55 of index.js")
-    console.log(db);
+
     // Execute the SQL query
     db.all(sql, [], (err, rows) => {
       if (err) {
@@ -94,13 +94,10 @@ app.get('/user/:userId', (req, res) => {
   var userId = req.params.userId;
 
   Users.getOneUser(userId, (err, results) => {
-      if (err) {
-          console.log("Issue at line 89 index.js")
-          console.log(err);
+    if (err) {
+          console.log("err at app.get('/user/:userId' of index.js: ",err);
           return res.status(500).send();
-      } else {
-        console.log("Line 95 checking for results in index.js")
-        console.log(results)
+    } else {
         return res.status(200).json(results);
       }
   });
@@ -121,8 +118,7 @@ app.put('/editUser/:userId', async (req, res) => {
   if (newPassword === confirmPassword) {
     Users.editUserDetails(userId, username, email, currentPassword, newPassword, passwordHash, (err, results) => {
       if (err) {
-        console.log("the error is at line 109");
-        console.log(err);
+        console.log("err at app.put('/editUser/:userId' of index.js: ", err);
         return res.status(500).send();
       } else {
         return res.status(200).json(results);
@@ -139,12 +135,9 @@ app.get('/topics', (req, res) => {
   // const userId = req.params.userId;
   Topics.getAllTopics((err, results) => {
       if (err) {
-          console.log("the error is at line 127")
-          console.log(err);
+          console.log("err located at app.get('/topics'): " , err);
           return res.status(500).send();
       } else {
-        console.log("results for topics")
-        console.log(results)
           return res.status(200).json(results);
       }
   });
@@ -152,12 +145,12 @@ app.get('/topics', (req, res) => {
 
 /*-----------------------Routing for the login and add user page------------------*/
 // Add all the route handlers in usersRoutes to the app under the path /users
-const usersRoutes = require('./routes/register');
+const usersRoutes = require('./model/register');
 app.use('/users', usersRoutes);
 
 // Make the web application listen for HTTP requests
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`App listening on port ${port}`)
 })
 
 
