@@ -31,7 +31,7 @@
 /*--This is for the navbar when we are scrolling down--*/
 .HomepageHeaderSection.sticky {
   padding: 30px 15%;
-  background-color: rgb(234, 234, 229); /* Background color when sticky */
+  background-color: #a3a3a3; /* Background color when sticky */
 }
 
 /*----This affects the text of the navbar when the user is scrolling---*/
@@ -544,7 +544,7 @@ header.sticky{
 }
 
 .topicsCard:hover{
-  background-color: #edededa1;
+  background-color: rgba(90, 92, 194, 0.804);
 }
 
 .topicBtn{

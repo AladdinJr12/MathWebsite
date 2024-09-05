@@ -48,7 +48,7 @@
 }
 
 .LoginPage{
-  padding-bottom: 15%;
+  padding-bottom: 0%;
   height: 100vh;
 }
 
@@ -149,7 +149,7 @@
 
 /*logo and navbar*/
 .headerSection{
-  background-color: #2e77a1;
+  background-color: #093952;
   transition: ease 0.40s;
   color: black !important;
 }
@@ -164,7 +164,7 @@
 }
 
 .logo:hover{
-  color: #093952;
+  color:  #FCDE70 ;
 }
 
 /*navbar*/
