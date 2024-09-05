@@ -99,33 +99,45 @@ export default function HomePage() {
 
                 <div className="location-content">
                     <div className="col-images">
-                        <img src="set.jpg" alt="Set Theory" />
-                        <p>Set Theory</p>
+                        <a href='/lesson-page'>
+                            <img src="set.jpg" alt="Set Theory"/>
+                            <p>Set Theory</p>
+                        </a>
                     </div>
 
                     <div className="col-images">
-                        <img src="relations.jpg" alt="Relations" />
-                        <p>Relations</p>
+                        <a href='/lesson-page'> 
+                            <img src="relations.jpg" alt="Relations" />
+                            <p>Relations</p>
+                        </a>
                     </div>
 
                     <div className="col-images">
-                        <img src="combinatorics.jpg" alt="Combinatorics" />
-                        <p>Combinatorics</p>
+                        <a href='/lesson-page'>                        
+                            <img src="combinatorics.jpg" alt="Combinatorics" />
+                            <p>Combinatorics</p>
+                        </a>
                     </div>
 
                     <div className="col-images">
-                        <img src="permutations.jpg" alt="Permutations" />
-                        <p>Permutations</p>
+                        <a href='/lesson-page'>                        
+                            <img src="permutations.jpg" alt="Permutations" />
+                            <p>Permutations</p>
+                        </a>
                     </div>
 
                     <div className="col-images">
-                        <img src="graph.jpg" alt="Graphs" />
-                        <p>Graphs</p>
+                        <a href='/lesson-page'>
+                            <img src="graph.jpg" alt="Graphs" />
+                            <p>Graphs</p>
+                        </a>
                     </div>
 
                     <div className="col-images">
-                        <img src="proofs.jpg" alt="Proofs" />
-                        <p>Proofs</p>
+                        <a href='/lesson-page'>
+                            <img src="proofs.jpg" alt="Proofs" />
+                            <p>Proofs</p>
+                        </a>
                     </div>
                 </div>
             </section>
