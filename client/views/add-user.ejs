@@ -27,7 +27,6 @@
                 <li><a class="navbarOption" href="http://localhost:5173/topics">Topics</a></li>
                 <li><a class="navbarOption" href="http://localhost:5173/lesson-page">Lessons</a></li>
                 <li><a class="navbarOption" href="http://localhost:5173/question-settings">Quizzes</a></li>
-
             </ul>
         </header>
     </div>
@@ -35,15 +34,12 @@
     <div class="LoginOrRegisterPage RegisterPage">        
         <form action="/users/register" method="POST" class="RegisterPageForm" onsubmit="return validateForm()">
             <h1 class="LoginRegisterPageH1">Create a New Account</h1>
-            
-            <!-- Placeholder for error messages -->
-            <% if(typeof error !== "undefined") {%> 
-                <div class="alert alert-danger LoginOrRegisterAlert" role="alert">
-                    <%= error %>
-                </div>
-            <% } %>
-            <!-- The error message for when the confirm password and password values are different -->
-            <div class="alert alert-danger LoginOrRegisterAlert" id="errorMessage" role="alert" style="display: none;">  </div>
+            <!-- Combined error message placeholder -->
+            <div class="alert alert-danger LoginOrRegisterAlert" id="errorMessage" role="alert" style="display: <% if(typeof error === 'undefined') { %>none<% } %>;">
+                <% if(typeof error !== "undefined") { %> 
+                    <%= error %> <!-- Server-side error -->
+                <% } %>
+            </div>
             
             <div class="form-group">
                 <label for="username" class="LoginOrRegisterPageLabel">Username:</label>
