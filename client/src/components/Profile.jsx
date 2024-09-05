@@ -91,6 +91,14 @@ export default function Profile() {
     }
     const editUserDetails = async (event) => {
         event.preventDefault();
+        
+        const passwordMsg = document.getElementById('password-message');
+        if (newPassword !== confirmPassword) {
+            passwordMsg.classList.add('alert', 'alert-danger');
+            passwordMsg.innerHTML = "Confirm Password must match New Password.";
+            return;
+        }
+
         await axios.put('http://localhost:3000/editUser/' + userId, {
             username: username,
             email: email,
@@ -101,6 +109,7 @@ export default function Profile() {
         .then(res => {
             console.log(res);
             window.location.reload();
+            alert('Changes saved!');
         })
         .catch(err => {
             console.error('There was an update error!', err);
@@ -169,6 +178,8 @@ export default function Profile() {
                                 </Button>
                             </InputGroup>
                         </Form.Group>
+
+                        <div id='password-message'></div>
 
                         <Button className='profilePageBtn' type='submit'>Save Changes</Button>
                         <Button className='BackToHomeBtn' onClick={handleBackBtnSubmit}>Back to Home page</Button>
