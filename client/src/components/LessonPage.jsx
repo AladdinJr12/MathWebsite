@@ -29,7 +29,7 @@ export default function LessonPage(){
                 </ul>
                 <h2>Pratice quizzes </h2>
                 <ul>
-                    <li><a href="" onClick={handleQuizPageSubmit}>Set theory quizz</a></li>
+                    <li><a href="" onClick={handleQuizPageSubmit}>Set theory quiz</a></li>
                 </ul>
             </aside>
         
